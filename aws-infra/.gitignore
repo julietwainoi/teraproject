@@ -1,0 +1,9 @@
+.terraform/
+/boostrap-backend/.terraform/
+
+*.tfstate
+*.tfstate.backup
+crash.log
+*.log
+.terraform.lock.hcl
+/boostrap-backend/.terraform.lock.hcl
