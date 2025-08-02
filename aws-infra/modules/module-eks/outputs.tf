@@ -39,9 +39,9 @@ users:
       args:
         - "eks"
         - "get-token"
+        - "--region"
+        - "${data.aws_region.current.id}"   # <--- Fix here
         - "--cluster-name"
         - "${aws_eks_cluster.eks_cluster.name}"
-        - "--region"
-        - "${data.aws_region.current.name}"
 EOT
 }

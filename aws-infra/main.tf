@@ -28,17 +28,19 @@ module "vpc" {
 }
 
 # Call the ECR module
-#module "ecr" {
- # source = "./modules/module-ecr"
-  #repository_name = var.app_name
-#}
+module "ecr" {
+ source = "./modules/module-ecr"
+  repository_name = var.app_name
+}
 
 # Call the EKS module
-#module "eks" {
- # source = "./modules/module-eks"
- # app_name = var.app_name
- # vpc_id = module.vpc.vpc_id
-  #private_subnets = module.vpc.private_subnets
-  #eks_node_group_instance_type = var.eks_node_group_instance_type
-  #eks_node_group_desired_capacity = var.eks_node_group_desired_capacity
-#}
+module "eks" {
+ source = "./modules/module-eks"
+ app_name = var.app_name
+ environment                   = var.environment
+ vpc_id                         = module.vpc.vpc_id
+ public_subnet_ids             = module.vpc.public_subnets_ids
+ private_subnet_ids            = module.vpc.private_subnets_ids
+ eks_node_group_instance_type = var.eks_node_group_instance_type
+ eks_node_group_desired_capacity = var.eks_node_group_desired_capacity
+}

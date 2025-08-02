@@ -26,7 +26,7 @@ variable "public_subnet_ids" {
 variable "eks_version" {
   type        = string
   description = "Kubernetes version for the EKS cluster."
-  default     = "1.24"
+  default     = "1.28"
 }
 
 variable "eks_node_group_instance_type" {
